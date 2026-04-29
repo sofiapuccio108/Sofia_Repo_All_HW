@@ -1,0 +1,81 @@
+---
+title: "Homework 9"
+format: html
+---
+```{r}
+### Homework 9 ###
+# Sofia Puccio #
+# 03/18/2026 #
+
+# In this assigment I will be creating figures in ggplot corresponding to the four major statistical designs reflecting relationships between y and x. 
+
+# Question 1: Continuous (x) and Continuous (y) 
+# In this segment, both variables are continuous
+# A relationship is shown with a regression line 
+
+library(ggplot2)
+
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(
+    title = "Relationship Between Sepal Length and Petal Length in Iris",
+    x = "Sepal Length (cm)",
+    y = "Petal Length (cm)"
+  ) +
+  theme_minimal()
+
+# Question 2: Discrete (x) and Continuous (y) 
+# Comparing sepal lengths across iris species 
+# The species is categorical, and the sepal length is the continuous variable 
+
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot(alpha = 0.6) +
+  geom_jitter(width = 0.2, alpha = 0.7) +
+  labs(
+    title = "Sepal Length Distribution Across Iris Species",
+    x = "Species",
+    y = "Sepal Length (cm)"
+  ) +
+  theme_minimal()
+
+# The result is a series of boxplots that show distribution of sepal length by species with individual points.
+# ANOVA style visualization comparing the distribution of sepal length across species
+
+# Question 3: Continuous (x) and Discrete (y)
+# This can be shown in a logistic regression curve 
+library(ggplot2)
+
+ggplot(mtcars, aes(x = mpg, y = am)) +
+  geom_jitter(height = 0.05, width = 0, alpha = 0.7) +
+  geom_smooth(method = "glm",
+              method.args = list(family = "binomial"),
+              color = "red") +
+  labs(
+    title = "Probability of Manual Transmission vs MPG",
+    x = "Miles per Gallon (mpg)",
+    y = "Transmission (0 = Automatic, 1 = Manual)"
+  ) +
+  theme_minimal()
+
+# This results in a logistic growth curve that includes binary points with logistic regression curve displaying probability of manual transmission increasing with MPG.
+
+# Question 4: Discrete (x) Discrete (y)
+# For this we will use the number of cylinders v. transmission type, with cylinders and transmission types both being categorical
+
+mtcars$cyl <- as.factor(mtcars$cyl)
+mtcars$am <- as.factor(mtcars$am)
+
+ggplot(mtcars, aes(x = cyl, fill = am)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Transmission Type by Number of Cylinders",
+    x = "Number of Cylinders",
+    y = "Count",
+    fill = "Transmission (0 = Auto, 1 = Manual)"
+  ) +
+  theme_minimal()
+
+# The result here is grouped bar charts showing counts of manual vs automatic cars for each cylinder category.
+
+```

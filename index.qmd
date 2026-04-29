@@ -5,3 +5,6 @@ title: "Sofia_Repo_All_HW"
 This is a Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+
+[Homework_3](Homework 3.html)

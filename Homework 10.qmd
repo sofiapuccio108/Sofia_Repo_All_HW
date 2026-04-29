@@ -1,0 +1,89 @@
+---
+title: "homework 10"
+format: html
+---
+```{python}
+### Homework 10 ### 
+# Python Data Structures #
+# Sofia Puccio 03/25/26 # 
+
+# List Operations 
+
+# First we need to create a mixed-type list 
+import numpy as np
+
+my_list = [42, "hello", True, [1, 2, 3, 4], 3.14]
+
+# 1) Pull out the third element (index 2)
+third_element = my_list[2]
+
+# 2) Extract the interior list and get its 3rd element
+inner_list = my_list[3]
+listWithinList = inner_list[2]
+
+# 3) Use list methods
+
+# .append() adds an element to the end of the list
+my_list.append("new item")
+
+# .pop() removes and returns the last element (or a specified index)
+removed_item = my_list.pop()
+
+# -----------------------------
+# 2) DICTIONARY OPERATIONS
+# -----------------------------
+
+# Create a dictionary
+my_dict = {
+    "name": "Sofia",
+    "age": 21,
+    "major": "Biology",
+    "gpa": 3.8,
+    "graduated": False
+}
+
+# 1) Extract keys
+keys = my_dict.keys()
+
+# 2) Extract values
+values = my_dict.values()
+
+# 3) Use dictionary methods
+
+# .get() retrieves the value for a key without causing an error if it doesn't exist
+name_value = my_dict.get("name")
+
+# .pop() removes a key-value pair and returns its value
+removed_value = my_dict.pop("graduated")
+
+# 4) Add a new element
+my_dict["minor"] = "Chemistry"
+
+# 5) Remove a different element
+del my_dict["gpa"]
+
+
+# 3) NUMPY OPERATIONS
+
+import numpy as np
+
+# Create array of length 100 with values between 0 and 1
+arr1 = np.random.rand(100)
+
+# 1) Extract last 10 elements using negative indexing
+last_10 = arr1[-10:]
+
+# 2) Convert floats to strings, then back to floats
+arr_str = arr1.astype(str)
+arr_float = arr_str.astype(float)
+
+# 3) Reshape into 10x10 array
+arr2D = arr1.reshape(10, 10)
+
+# 4) Create binary array with p(1)=0.2 and p(0)=0.8
+arr_bin = np.random.choice([0, 1], size=(10, 10), p=[0.8, 0.2])
+
+# 5) Stack into 3D array (10x10x2)
+arr_3D = np.stack((arr2D, arr_bin), axis=2)
+
+```
